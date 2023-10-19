@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <style>
+    .my-5 {
+        margin-top: 3rem!important;
+        margin-bottom: 0rem!important;
+    }
+    [data-bs-theme="dark"] #header {
+        background-color: #343a40; /* for example, a dark grey */
+    }
+
+    [data-bs-theme="dark"] #header a,
+    [data-bs-theme="dark"] #header .nav-link {
+        color: #ffffff; /* white text */
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        color: var(--bs-nav-pills-link-active-color);
+        background-color: #ffffff;
+    }
+
+    .nav-pills .nav-link:hover {
+        color: #3574d2 !important;
+    }
+    .main_text {
+        text-align: center;
+        margin-top: 13vh;
+        margin-bottom: 15vh;
+    }
+
+    .typing-animation{
+        overflow: hidden;
+        border-right: .15em solid rgb(255, 255, 255);
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .1em;
+        display: inline-block;
+        animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from { max-width: 0 }
+        to { max-width: 100% }
+    }
+
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: rgb(255, 255, 255); }
+    }
+
+    .carousel-inner img {
+        width: auto;
+        height: 60vh;
+    }
+
+  </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <section id="header">
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-1 mb-2 border-bottom">
+              <a href="./index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img src="./images/box.svg" class="bi me-2" width="40" height="32">
+                <span class="fs-4" style="margin-left: 1vh; font-family: 'Apple Chancery', cursive;">JKL</span>
+              </a>
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a href="./index.html" class="nav-link active" aria-current="page" style="color: black; padding-left: 1vh; padding-right: 1vh; padding-top: 0.4vh; padding-bottom: 0.4vh; ">Home</a></li>
+              </ul>
+            </header>
+          </div>
+    </section>
+
+    <!--Photo Gallery -->
+
+    <div class = "container">
+        <div class="main_text">
+            <h1 class="display-4 fw-bold text-body-emphasis" style="padding-bottom: 5vh;;">
+                <span class="typing-animation">Photo Gallery</span>
+            </h1>
+            <div class="col-lg-7 mx-auto">
+                <p class="lead mb-4">
+                    <div id="typedText"></div>
+                    <script>
+                    const text = `Welcome to my gallery! I'm a photography enthusiast who loves exploring the world with my Canon EOS R10 in hand. This section is a mix of everything I enjoy — serene nature, captivating landscapes, and the occasional travel adventures. No frills, no fuss, just a bunch of photos that I hope you'll find as cool as I do. Happy viewing! 🌍📷`;
+                    const div = document.getElementById('typedText');
+                    let index = 0;
+
+                    function type() {
+                        if (index < text.length) {
+                            div.textContent += text.charAt(index);
+                            index++;
+                            setTimeout(type, 22.5); // typing speed
+                        }
+                    }
+                    type();
+                    </script>
+                </p>
+            </div>
+        </div>
+
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="10" aria-label="Slide 11"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="11" aria-label="Slide 12"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="12" aria-label="Slide 13"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="13" aria-label="Slide 14"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="14" aria-label="Slide 15"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="15" aria-label="Slide 16"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="16" aria-label="Slide 17"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="17" aria-label="Slide 18"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="18" aria-label="Slide 19"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="19" aria-label="Slide 20"></button>
+            </div>
+            
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./photo_gallery/IMG_0074.JPG" class="d-block w-100" alt="..." >
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0101.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0120.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0186.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0245.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0254.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0274.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0283.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0305.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_0701.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_1083.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_1108.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_1132.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_1255.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_1298.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_1329.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" style="object-fit: contain;">
+                <img src="./photo_gallery/IMG_2404.jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_3313.jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="./photo_gallery/IMG_4707.JPG" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" style="object-fit: scale-down;">
+                <img src="./photo_gallery/IMG_9887.jpeg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 my-5 border-top">
+            <div class="col">
+                <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                </a>
+                <p class="text-body-secondary" style="padding-top: 1vh;">© Jeong Kyu Lee</p>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
