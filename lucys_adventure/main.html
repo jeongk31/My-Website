@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <!-- load in the p5 core library -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+
+    <!-- load in the p5 sound library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.js"></script>
+
+    <!-- your custom sketch code -->
+    <script src="main_sketch.js"></script>
+
+    <!-- custom CSS styles for this page -->
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #737331;
+      }
+      h1 {
+        font-family: "Raleway", sans-serif;
+        font-weight: 700;
+        font-size: 60px;
+        color: rgb(189, 189, 188);
+      }
+      #game_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1vh;
+      }
+      #status_bar {
+        background-color: #380d0d;
+        border: 1px solid #000000;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 8px;
+        padding-bottom: 10px;
+        width: 900px;
+        text-align: center;
+        color: rgb(140, 219, 181);
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .status_titles {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 3px;
+      }
+      .status_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 14px;
+      }
+      .status_values {
+        color: rgb(255, 255, 255);
+      }
+      .bar {
+        width: 100px;
+        height: 10px;
+        border: 1px solid #000;
+        background-color: #e0e0e0;
+        margin-top: 4px;
+      }
+      .fill {
+        height: 100%;
+        background-color: green;
+      }
+      
+      #canvas_container {
+        position: relative;
+        width: 500px;
+        height: 253px;
+        transform: scale(2);
+        transform-origin: 50% 0;
+      }
+      #bathroom_button {
+        display: none;
+        top: 27%;
+        left: 50%;
+        font-size: 14px;
+        height: 48px;
+        padding: 2px 24px;
+      }
+      #game_button {
+        display: none;
+        top: 27%;
+        left: 20%;
+        font-size: 14px;
+        height: 48px;
+        padding: 2px 24px;
+      }
+      #leave_bathroom_button {
+        display: none;
+        top: 15%;
+        left: 72%;
+        font-size: 12px;
+        height: 35px;
+        padding: 2px 15px;
+      }
+      #open_refrigerator_button {
+        display: none;
+        top: 27%;
+        left: 50%;
+        font-size: 14px;
+        height: 48px;
+        padding: 2px 24px;
+      }
+      #close_refrigerator_button {
+        display: none;
+        top: 91%;
+        left: 17.3%;
+        font-size: 10px;
+        height: 30px;
+        padding: 1px 10px;
+      }
+
+      #gallery_1_button {
+        display: none;
+        top: 25%;
+        left: 50%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #gallery_2_button {
+        display: none;
+        top: 21%;
+        left: 50%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #leave_gallery_button {
+        display: none;
+        top: 9%;
+        left: 80%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      
+      #orange_button {
+        display: none;
+        top: 70%;
+        left: 61.2%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #apple_button {
+        display: none;
+        top: 70%;
+        left: 71.8%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #chocolate_button {
+        display: none;
+        top: 50%;
+        left: 61.7%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #chicken_button {
+        display: none;
+        top: 50%;
+        left: 72.5%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #bacon_button {
+        display: none;
+        top: 34.2%;
+        left: 61.3%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #beef_button {
+        display: none;
+        top: 34.2%;
+        left: 72.5%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+      #lobster_button {
+        display: none;
+        top: 19.5%;
+        left: 73%;
+        font-size: 7px;
+        height: 15px;
+        padding: 1px 5px;
+      }
+
+      .button-17 {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        appearance: none;
+        background-color: #b6b8dc;
+        border-radius: 24px;
+        border-style: none;
+        box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+        box-sizing: border-box;
+        color: #3c4043;
+        cursor: pointer;
+        display: inline-flex;
+        fill: currentcolor;
+        font-family: "Google Sans",Roboto,Arial,sans-serif;
+        font-weight: 500;
+        justify-content: center;
+        letter-spacing: .25px;
+        line-height: normal;
+        max-width: 100%;
+        overflow: visible;
+        text-align: center;
+        text-transform: none;
+        transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: auto;
+        will-change: transform,opacity;
+        z-index: 0;
+      }
+
+      .button-17:hover {
+        background: #F6F9FE;
+        color: #174ea6;
+      }
+
+      .button-17:active {
+        box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+        outline: none;
+      }
+
+      .button-17:focus {
+        outline: none;
+        border: 2px solid #4285f4;
+      }
+
+      .button-17:not(:disabled) {
+        box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+      }
+
+      .button-17:not(:disabled):hover {
+        box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+      }
+
+      .button-17:not(:disabled):focus {
+        box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+      }
+
+      .button-17:not(:disabled):active {
+        box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+      }
+
+      .button-17:disabled {
+        box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+      }
+
+      
+      
+    </style>
+
+  </head>
+  <body>
+    <h1>LUCY'S ADVENTURE</h1>
+    <div id="game_container">
+      <div id="status_bar">
+        <div class="status_item">
+          <span class="status_titles">Money</span>
+          <span class="status_values" id="money"></span>
+        </div>
+
+        <div class="status_item attribute">
+          <span class="status_titles">Health</span>
+          <div class="bar">
+              <div class="fill" id="health_fill"></div>
+          </div>
+        </div>
+  
+        <div class="status_item attribute">
+          <span class="status_titles">Cleanness</span>
+          <div class="bar">
+              <div class="fill" id="cleanness_fill"></div>
+          </div>
+        </div>
+  
+        <div class="status_item attribute">
+          <span class="status_titles">Nutrition</span>
+          <div class="bar">
+              <div class="fill" id="nutrition_fill"></div>
+          </div>
+        </div>
+  
+        <div class="status_item attribute">
+          <span class="status_titles">XP</span>
+          <div class="bar">
+              <div class="fill" id="xp_fill"></div>
+          </div>
+        </div>
+
+        <div class="status_item">
+          <span class="status_titles">Level</span>
+          <span class="status_values" id="level"></span>
+        </div>
+      </div>
+        <div id="canvas_container">
+        <!-- Source for buttons: https://getcssscan.com/css-buttons-examples -->
+          <button class="button-17" role="button" id="game_button" onclick="changestate('6'); return false;">Play Game?</button>
+
+          <button class="button-17" role="button" id="bathroom_button" onclick="changestate('2'); return false;">Enter Bathroom?</button>
+          
+          <button class="button-17" role="button" id="leave_bathroom_button" onclick="changestate('1'); return false;">Leave Bathroom?</button>
+
+          <button class="button-17" role="button" id="open_refrigerator_button" onclick="changestate('3'); return false;">Open Refrigerator?</button>
+
+          <button class="button-17" role="button" id="close_refrigerator_button" onclick="changestate('1'); return false;">Close Refrigerator?</button>
+
+          <!--buttons for foods-->
+          <button class="button-17" role="button" id="orange_button" onclick="purchasefood('10'); return false;">Orange</button>
+
+          <button class="button-17" role="button" id="apple_button" onclick="purchasefood('20'); return false;">Apple</button>
+
+          <button class="button-17" role="button" id="chocolate_button" onclick="purchasefood('30'); return false;">Chocolate</button>
+
+          <button class="button-17" role="button" id="chicken_button" onclick="purchasefood('50'); return false;">Chicken</button>
+
+          <button class="button-17" role="button" id="bacon_button" onclick="purchasefood('60'); return false;">Bacon</button>
+
+          <button class="button-17" role="button" id="beef_button" onclick="purchasefood('80'); return false;">Beef</button>
+
+          <button class="button-17" role="button" id="lobster_button" onclick="purchasefood('110'); return false;">Lobster</button>
+
+
+          <!--buttons for galleries-->
+          <button class="button-17" role="button" id="gallery_1_button" onclick="changestate('4'); return false;">See Photo</button>
+          
+          <button class="button-17" role="button" id="gallery_2_button" onclick="changestate('5'); return false;">See Photo</button>
+
+          <button class="button-17" role="button" id="leave_gallery_button" onclick="changestate('1'); return false;">Leave Gallery</button>
+        </div>
+      </div>
+  </body>
+</html>
