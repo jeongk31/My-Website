@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stock Market Game</title>
+        <!-- Include p5.js from the CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                background: #e3e4e6;
+                color: #333;
+                overflow-x: hidden;
+            }
+    
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 80%;
+                margin: auto;
+                padding: 20px;
+            }
+    
+            canvas {
+                border: 3px solid #4a5c66;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+    
+            .game-info, .documentation {
+                margin-top: 20px;
+                padding: 15px;
+                border: 1px solid #bdc3c7;
+                border-radius: 8px;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                width: 100%;
+            }
+    
+            .game-info strong, .documentation h1, .documentation h2 {
+                color: #2c3e50;
+            }
+    
+            .game-info p, .documentation p {
+                margin: 5px 0;
+            }
+    
+            .dropdown, #difficultySelect {
+                margin-top: 10px;
+                padding: 8px;
+                border-radius: 4px;
+                border: 1px solid #4a5c66;
+                background-color: #fff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            #helpDropdown {
+                margin-bottom: 20px;
+            }
+    
+            label {
+                margin-top: 20px;
+                font-weight: bold;
+                color: #2c3e50;
+            }
+    
+            #notification {
+                margin-top: 10px;
+                color: #e74c3c;
+                font-weight: bold;
+            }
+    
+            .button {
+                padding: 10px 15px;
+                margin: 5px;
+                border: none;
+                border-radius: 4px;
+                background-color: #4a5c66;
+                color: white;
+                cursor: pointer;
+            }
+    
+            .button:hover {
+                background-color: #3a4b56;
+            }
+    
+            @media (max-width: 768px) {
+                .container {
+                    width: 95%;
+                }
+            }
+    
+            .documentation section {
+                margin-bottom: 20px;
+            }
+    
+        </style>
+    </head>
+<body>
+
+            <div class="container" id="canvas-container">
+
+                <!-- Documentation Section -->
+            <div class="documentation">
+                <h1>Game Documentation</h1>
+
+                <!-- Game Overview -->
+                <section id="game-overview">
+                    <h2>Game Overview</h2>
+                    <p>This game is a stock market simulation where players start with an initial budget and aim to increase their wealth by trading stocks and buying items. The game is set in a dynamic market environment where stock prices fluctuate over time.</p>
+                </section>
+
+                <!-- Gameplay Instructions -->
+                <section id="gameplay-instructions">
+                    <h2>Gameplay Instructions</h2>
+                    <p>Players navigate the game by interacting with different in-game icons like the phone icon for trading and the shopping icon for purchasing items. The goal is to strategically buy and sell stocks and items to maximize wealth.</p>
+                </section>
+
+                <!-- Interface Description -->
+                <section id="interface-description">
+                    <h2>Interface Description</h2>
+                    <p>The game interface includes a main canvas where players can view their character, budget, and total wealth. Icons are used to access different game functionalities like trading stocks and shopping.</p>
+                </section>
+
+                <!-- Player Actions and Strategies -->
+                <section id="player-actions">
+                    <h2>Player Actions and Strategies</h2>
+                    <p>Players can buy or sell stocks, view stock market details, buy items, and view their portfolio. Strategic buying and selling based on market trends are key to increasing wealth.</p>
+                </section>
+
+                <!-- Difficulty Levels -->
+                <section id="difficulty-levels">
+                    <h2>Difficulty Levels</h2>
+                    <p>The game offers different difficulty levels (easy, normal, hard) which affect the volatility and complexity of the stock market in the game.</p>
+                </section>
+
+                <!-- Help and Support -->
+                <section id="help-support">
+                    <h2>Help and Support</h2>
+                    <p>A help section is available for players to get assistance on different topics like buying stocks, selling items, and understanding game mechanics.</p>
+                </section>
+            </div>
+
+            <div class="game-info">
+                <p><strong>Player Info:</strong></p>
+                <p>Budget: <span id="budget">0.0</span></p>
+                <p>Total Wealth: <span id="total-wealth">0.00</span></p>
+                <p id="notification"></p>
+            </div>
+
+        <!-- Difficulty Select -->
+        <label for="difficultySelect">Choose Difficulty:</label>
+        <select id="difficultySelect" class="dropdown">
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Hard</option>
+        </select>
+        <label for="helpDropdown">Help Topics:</label>
+        <select id="helpDropdown" class="dropdown">
+            <option>Select Topic</option>
+        </select>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            createHelpDropdown();
+            document.getElementById('difficultySelect').addEventListener('change', function() {
+                difficulty = this.value;
+                stocks.forEach(stock => stock.updatePrice());
+                updateBudget();
+                updateTotalWealth();
+                updateNotification();
+            });
+        });
+    </script>
+
+    <script src="sketch.js"></script>
+</body>
+</html>
+
