@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>무장애관광지도</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header">
+        <h1>무장애관광지도</h1>
+        <p>Explore accessible tourism spots with ease</p>
+    </div>
+    <div id="search-bar">
+        <input id="search-input" type="text" placeholder="검색" />
+        <select id="category-filter">
+            <option value="all">전체</option>
+            <option value="parks">공원</option>
+            <option value="museums">박물관</option>
+            <option value="experience">체험관</option>
+        </select>
+    </div>
+    <div id="map"></div>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eed493cca91f34dd4724171d9824fff6"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
